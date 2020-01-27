@@ -10,8 +10,9 @@ import org.springframework.stereotype.Controller;
 public class UserController {
 
 
-    @MessageMapping("/user")
-    @SendTo("/topic/user")
+    @MessageMapping("/user") // to send message to this address: /app/user
+    // ApplicationDestinationPrefixes: /app
+    @SendTo("/topic/user") // to subscribe
     public UserResponse getUser(User user) {
 
         return new UserResponse("Hi " + user.getName());
